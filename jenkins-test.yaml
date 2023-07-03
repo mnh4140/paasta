@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: hello-nginx
-          image: nhimage:test
+          image: 52.79.48.121:30002/nh-project/nhimage:test
           ports:
             - containerPort: 80
