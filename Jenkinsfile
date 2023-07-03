@@ -19,6 +19,12 @@ pipeline {
                 sh 'sudo podman push 52.79.48.121:30002/nh-project/nhimage:test --tls-verify=false'
             }
         }
+
+	stage('deploy') {
+            steps {
+                sh 'kubectl apply -f jenkins-test.yaml'
+            }
+        }
     }
 }
 
