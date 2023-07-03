@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-nginx
+  namespace: nh-name
 spec:
   replicas: 1
   selector:
@@ -15,5 +16,8 @@ spec:
       containers:
         - name: hello-nginx
           image: 52.79.48.121:30002/nh-project/nhimage:test
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: nh-secret
