@@ -16,7 +16,7 @@ pipeline {
 
         stage('harbor push') {
             steps {
-                sh 'sudo podman push 52.79.48.121:30002/nh-project/nhimage --tls-verify=false'
+                sh 'sudo podman push 52.79.48.121:30002/nh-project/nhimage:test --tls-verify=false'
             }
         }
     }
