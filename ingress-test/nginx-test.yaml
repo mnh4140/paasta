@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test
+  namespace: nh-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+    spec:
+      containers:
+      - image: 52.79.48.121:30002/nh-project/nginx:v9
+        name: nginx-test
+        ports:
+        - containerPort: 4140
+          protocol: TCP
+      imagePullSecrets:
+        - name: nh-secret
