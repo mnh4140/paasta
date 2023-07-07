@@ -2,17 +2,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress                       
 metadata:
-  name: nh-ingress-example     
+  name: ingress-nginx-tomcat
   namespace: nh-name
 spec:       
-  ingressClassName: nginx                    
+  ingressClassName: nginx                 
   rules:
   - http:
       paths:
       - pathType: Prefix
-        path: "/nh"
+        path: "/intra"
         backend:                  
           service:
-            name: nginx-test-service
+            name: service-nginx-tomcat
             port: 
               number: 80

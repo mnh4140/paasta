@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymont-nginx-tomcat
+  namespace: nh-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-tomcat
+  template:
+    metadata:
+      labels:
+        app: nginx-tomcat
+    spec:
+      containers:
+      - image: 52.79.48.121:30002/nh-project/nginx:tomcat5
+        name: nginx-tomcat
+        ports:
+        - containerPort: 4140
+          protocol: TCP
+      imagePullSecrets:
+        - name: nh-secret

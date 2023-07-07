@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-hello-nh
+  name: service-nginx-tomcat
   namespace: nh-name
 spec:
   type: ClusterIP
@@ -10,4 +10,4 @@ spec:
     protocol: TCP
     targetPort: 4140
   selector:
-    app: hello-nh
+    app: nginx-tomcat

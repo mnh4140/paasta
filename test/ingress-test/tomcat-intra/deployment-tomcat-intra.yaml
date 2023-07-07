@@ -1,23 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploymont-nh
+  name: deployment-tomcat-intra
   namespace: nh-name
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-nh
+      app: tomcat-intra
   template:
     metadata:
       labels:
-        app: hello-nh
+        app: tomcat-intra
     spec:
       containers:
-      - image: 52.79.48.121:30002/nh-project/nginx:v9
-        name: hello-nh
-        ports:
-        - containerPort: 4140
-          protocol: TCP
+        - name: tomcat-intra
+          image: 52.79.48.121:30002/nh-project/tomcat:v1
+          ports:
+            - containerPort: 8080
       imagePullSecrets:
         - name: nh-secret
