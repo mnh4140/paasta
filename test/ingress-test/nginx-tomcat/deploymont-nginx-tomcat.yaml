@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploymont-nh
+  namespace: nh-name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-nh
+  template:
+    metadata:
+      labels:
+        app: hello-nh
+    spec:
+      containers:
+      - image: 52.79.48.121:30002/nh-project/nginx:v9
+        name: hello-nh
+        ports:
+        - containerPort: 4140
+          protocol: TCP
+      imagePullSecrets:
+        - name: nh-secret
