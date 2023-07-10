@@ -1,0 +1,116 @@
+# PaaS-TA + Jenkins CI/CD
+
+- K8S
+  - Ingress
+  - PV/PVC
+  - 배포 전략
+    - Rolling Update
+- Jenkins
+  - github 연동
+    - Webhook 설정
+    - credentials 설정
+  - kube-config 설정
+  - Pipeline
+    - Pipeline code 작성
+    - Pipeline 동작 확인
+
+----------------------------------------
+2023.07.05 15:10:45
+----------------------------------------
+<pre>
+목차
+1.Kubernetes Cluster Architecture  
+ 1-1 쿠버네티스 클러스터 구성 요소 [혜환 주임님]  
+  1-1-1 Master Node(control Plane)  
+   - API Server / ETCD / Controller Manager / Scheduler  
+  1-1-2 Workder Node  
+   - kubelet / kube-proxy  
+  1-1-3 Pod  
+  1-1-4 ReplicaSets  
+  1-1-5 Deployment  
+  1-1-6 Service  
+   - ClusterIP / Loadbalancer / nodePort  
+  1-1-7 Ingress  
+  1-1-8 Namespaces  
+  1-1-9 Imperative vs Declarative  
+
+2.PaaS-TA 컨테이너 플랫폼 단독 배포 [준표 주임님]  
+  2-1 단독 배포 아키텍쳐  
+  2-2 Kubespray를 통한 클러스터 설치 법(PaaS-TA 깃허브 인용, kubespray 등 애매했던 개념들 작성)  
+  2-3 컨테이너 플랫폼 포털 사용법  
+
+3.Jenkins를 사용한 파이프라인 구축  
+  3-1 구축 구성도 [혜환 주임님]  
+  3-2 젠킨스 설치 [혜환 주임님]  
+  3-3 젠킨스 깃허브 연동(webhook/ credentials) 명노훈  
+  3-4 명령어 설치(kubectl / podman) 명노훈  
+  3-5 파이프라인 코드 작성 및 테스트 [준표 주임님]  
+  3-6 파이프라인 배포 확인 [준표 주임님]  
+</pre>
+----------------------------------------
+2023.07.03 18:00:18
+----------------------------------------
+
+* 중요 이슈 *
+- Jenkins Pipeline을 사용하여 어플리케이션 PaaS-TA에 배포 완료 (CI/CD 구현 성공)
+
+트러블 슈팅 내역
+1. github webhook 연동
+2. github credentials 설정
+3. Jenkins kubectl 명령어 사용을 위해 kube-config 수정
+4. Jenkins podman 명령어 사용 시 에러 발생  
+    - --tls-verify=false 옵션 사용해서 http 통신 사용
+
+----------------------------------------
+2023.06.30 17:00:24
+----------------------------------------
+PaaS-TA + Jenkins CI/CD 
+금일 프로젝트 정보 업데이트 하여 공유드립니다.
+
+* 중요 이슈
+  - jenkins 서버에서 podman 명령어 안됨
+  - 혜환주임님 하버까지 push 성공
+
+접속 정보 ----------------------------------------------
+
+PaaS-TA
+ㅇ URL : http://52.79.48.121:32703/
+ㅇ ID/PW : 
+    동시접속 지원 X
+    admin / admin (명노훈) 
+    admin2 / admin2 (안준표)
+    admin3 / admin3 (신혜환)
+
+Harbor
+ㅇ URL : http://52.79.48.121:30002/
+
+Jenkins
+ㅇ URL : http://43.201.127.141:8080/
+
+github
+ㅇ URL : https://github.com/JunPyo0117/CI-CD
+
+--------------------------------------------------------
+
+1) 1주차 : CI 환경 구현-----------------------------------
+
+ - Jenkins 구축 및 EIP 할당 (신혜환 주임) (완료) 6/29
+
+ - 목표 구성도 만들기 (명노훈) (완료) 6/29 ~ 6/30
+
+ - github 만들기 (안준표 주임) (완료) 6/29
+    - 주소 : https://github.com/JunPyo0117/CI-CD
+
+ - 서비스 별 브런치 생성(WEB/WAS) (안준표 주임) (완료) 6/29
+
+ - github 에 소스 코드 올리기 (안준표 주임) (진행 중) 6/29
+   - jsp 파일 (완료)
+   - DockerFiler 수정 (완료)
+
+ - github  - jenkins 연동 설정 
+   - webhook 설정 (push 하면 빌드 시작하는 설정) (완료) 6/29
+
+ - github - jenkins 연동 테스트 (인원 전체) (완료) 6/30
+   - github에 push 발생 시, jenkins pipeline 동작 확인
+
+ - 빌드한 이미지 harber 에 푸시 ~7/7
