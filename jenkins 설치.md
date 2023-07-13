@@ -7,7 +7,7 @@ helm repo add ${레포지터리 이름} https://charts.jenkins.io
 helm repo update
 ```
 
-## 2. helm 인스톨
+## 2. Jenkins 파일 받기
 ```
 mkdir helm_chart && cd helm_chart
 helm fetch --untar ${레포지터리 이름}/jenkins
