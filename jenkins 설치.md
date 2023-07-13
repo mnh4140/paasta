@@ -43,3 +43,8 @@ kubectl get all -n nh-name
 ```
 ![image](https://github.com/mnh4140/paasta/assets/71053769/59b8c7e6-e33f-4a41-a1f2-03e32c5026d5)
 
+## 6. Jenkins 접속
+![image](https://github.com/mnh4140/paasta/assets/71053769/63e81459-ae5f-4f3d-9d34-4f33409f19ec)
+
+
+
