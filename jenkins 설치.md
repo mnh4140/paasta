@@ -13,6 +13,11 @@ mkdir helm_chart && cd helm_chart
 helm fetch --untar ${레포지터리 이름}/jenkins
 ```
 ## 3. values.yaml 수정
+### pv-pvc 적용
+볼륨 연결
+Slave Pod가 실행 완료 후 삭제되어도 Slave Pod에서 실행했던 내용이 남을 수 있도록 Slav Pod에도 볼륨을 마운트를 진행합니다.
+workingDir을 /var/jenkins_home로 정의하고 앞서 정의한 pvc로 연결해줍니다.
+
 ### Ingress 사용을 위해 수정
 ```
 vi jenkins/values.yaml
