@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('harbor login & podman build') {
             steps {
-                sh 'sudo podman login 52.79.48.121:30002 --username admin --password Harbor12345 --tls-verify=false'
+                sh 'podman login 52.79.48.121:30002 --username admin --password Harbor12345 --tls-verify=false'
                 sh 'sudo podman build -t tomcat:test -f signup-app/tomcat/Dockerfile .'
                 sh 'sudo podman build -t nginx:signup -f signup-app/nginx/Dockerfile .'
             }
