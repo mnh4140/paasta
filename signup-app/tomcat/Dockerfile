@@ -1,4 +1,5 @@
-FROM openjdk:10-jdk
+#FROM openjdk:10-jdk
+FROM openjdk
 MAINTAINER jyson
 
 # 환경 변수 및 작업 경로
