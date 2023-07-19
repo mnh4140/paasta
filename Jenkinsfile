@@ -4,9 +4,6 @@ pipeline {
     stages {
         stage('podman install') {
 	   steps {
-		sh '. /etc/os-release'
-                sh 'echo "deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/ /" | tee etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list'
-                sh 'curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${VERSION_ID}/Release.key | apt-key add -'
                 sh 'apt-get update'
                 sh 'apt-get -y upgrade' 
                 sh 'apt-get -y install podman'
