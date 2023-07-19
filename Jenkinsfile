@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('podman install') {
 	   steps {
-                sh 'sudo apt-get update'
-                sh 'sudo apt-get -y upgrade' 
-                sh 'sudo apt-get -y install podman'
+                sh 'apt-get update'
+                sh 'apt-get -y upgrade' 
+                sh 'apt-get -y install podman'
 	   }
 	}
         stage('harbor login & podman build') {
