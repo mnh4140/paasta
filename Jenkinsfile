@@ -11,6 +11,7 @@ pipeline {
                 sh 'apt-get -y upgrade' 
                 sh 'apt-get -y install podman'
 	   }
+	}
         stage('harbor login & podman build') {
             steps {
                 sh 'podman login 52.79.48.121:30002 --username admin --password Harbor12345 --tls-verify=false'
@@ -18,7 +19,7 @@ pipeline {
                 sh 'sudo podman build -t nginx:signup -f signup-app/nginx/Dockerfile .'
             }
         }
-		stage('podman tag & push') {
+	stage('podman tag & push') {
             steps {
 		sh 'sudo podman tag tomcat:test 52.79.48.121:30002/ajp-repository/tomcat:harbor'
 	        sh 'sudo podman push 52.79.48.121:30002/ajp-repository/tomcat:harbor --tls-verify=false'
@@ -26,7 +27,7 @@ pipeline {
 	        sh 'sudo podman push 52.79.48.121:30002/ajp-repository/nginx:signup --tls-verify=false'
             }
         }
-		stage('deployment') {
+	stage('deployment') {
             steps {
                 sh 'kubectl apply -f signup-app/yaml/ingress.yaml'
                 sh 'kubectl apply -f signup-app/yaml/tomcat/tomcat-service.yaml'
