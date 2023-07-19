@@ -18,10 +18,10 @@ pipeline {
         }
 	stage('podman tag & push') {
             steps {
-		sh 'sudo podman tag tomcat:test 52.79.48.121:30002/ajp-repository/tomcat:harbor'
-	        sh 'sudo podman push 52.79.48.121:30002/ajp-repository/tomcat:harbor --tls-verify=false'
-		sh 'sudo podman tag nginx:signup 52.79.48.121:30002/ajp-repository/nginx:signup'
-	        sh 'sudo podman push 52.79.48.121:30002/ajp-repository/nginx:signup --tls-verify=false'
+		sh 'podman tag tomcat:test 52.79.48.121:30002/ajp-repository/tomcat:harbor'
+	        sh 'podman push 52.79.48.121:30002/ajp-repository/tomcat:harbor --tls-verify=false'
+		sh 'podman tag nginx:signup 52.79.48.121:30002/ajp-repository/nginx:signup'
+	        sh 'podman push 52.79.48.121:30002/ajp-repository/nginx:signup --tls-verify=false'
             }
         }
 	stage('deployment') {
