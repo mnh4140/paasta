@@ -12,7 +12,7 @@ pipeline {
         stage('harbor login & podman build') {
             steps {
                 sh 'podman login 52.79.48.121:30002 --username admin --password Harbor12345 --tls-verify=false'
-                sh 'podman build -t tomcat:test -f signup-app/tomcat/Dockerfile .'
+                // sh 'podman build -t tomcat:test -f signup-app/tomcat/Dockerfile .'
                 sh 'podman build -t nginx:signup -f signup-app/nginx/Dockerfile .'
             }
         }
